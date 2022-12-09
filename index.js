@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
+const path = require('path');
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -17,6 +18,7 @@ app.use(
   })
 );
 
+app.use(express.static(path.join(__dirname, "public")))
 app.use(`${process.env.API_URL}/openAi`, openAi);
 
 app.listen(port, () => {
